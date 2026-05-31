@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة المندوب الطبي — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../../css/pro-dashboard.css">
+</head>
+<body>
+<div class="pro-shell">
+
+  <div class="pro-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="pro-sidebar" id="sidebar">
+    <div class="pro-sidebar-brand">
+      <div class="brand-logo" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">💼</div>
+      <div class="brand-text">
+        <strong>كريم بن يوسف</strong>
+        <span>مندوب طبي</span>
+      </div>
+    </div>
+
+    <nav class="pro-sidebar-nav">
+      <div class="pro-nav-label">القائمة الرئيسية</div>
+      <a class="pro-nav-item active" href="#">
+        <span class="nav-icon">🏠</span> الرئيسية
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🏥</span> الصيدليات
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📋</span> الطلبات
+        <span class="nav-badge" style="background:#3b82f6">7</span>
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📡</span> تنبيهات السوق
+        <span class="nav-badge">12</span>
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🔔</span> الإشعارات
+        <span class="nav-badge">5</span>
+      </a>
+      <div class="pro-nav-label">التحليلات</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📊</span> الإحصائيات
+      </a>
+      <div class="pro-nav-label">الإعدادات</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">⚙️</span> الإعدادات
+      </a>
+      <a class="pro-nav-item" href="professional-portal.html">
+        <span class="nav-icon">🚪</span> البوابة المهنية
+      </a>
+    </nav>
+
+    <div class="pro-sidebar-footer">
+      <div class="pro-sidebar-user">
+        <div class="user-avatar" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">ك</div>
+        <div class="user-info">
+          <strong>كريم بن يوسف</strong>
+          <span>شركة فارماليك</span>
+        </div>
+      </div>
+      <button onclick="proLogout()" style="width:100%;margin-top:.75rem;padding:.5rem;border:1.5px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-family:var(--font);font-size:.8rem;font-weight:700;cursor:pointer;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">← العودة للبوابة</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="pro-main">
+    <header class="pro-topbar">
+      <div class="pro-topbar-left">
+        <button class="pro-topbar-menu-btn" onclick="toggleSidebar()">☰</button>
+        <div>
+          <h2>بوابة المندوب الطبي</h2>
+          <div class="pro-breadcrumb">الرئيسية › كريم بن يوسف</div>
+        </div>
+      </div>
+      <div class="pro-topbar-right">
+        <button class="pro-topbar-btn">🔔<span class="pro-topbar-notif-dot"></span></button>
+        <button class="pro-topbar-btn">📡</button>
+        <div class="pro-topbar-avatar" style="background:linear-gradient(135deg,#3b82f6,#2563eb)">ك</div>
+      </div>
+    </header>
+
+    <div class="pro-content">
+
+      <!-- Welcome -->
+      <div class="pro-welcome" style="background:linear-gradient(135deg,#1e3a5f,#1e40af)">
+        <div class="pro-welcome-text">
+          <h2>مرحباً، كريم 👋</h2>
+          <p>لديك 12 تنبيه سوق جديد و 7 طلبات تحتاج مراجعة اليوم</p>
+        </div>
+        <div class="pro-welcome-badge">
+          <span class="dot" style="background:#60a5fa"></span> نشط · شركة فارماليك
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="pro-stats">
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon orange">📡</div>
+          <div class="pro-stat-info">
+            <p>تنبيهات السوق</p>
+            <strong>12</strong>
+            <small>↑ 4 جديدة اليوم</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon blue">🎯</div>
+          <div class="pro-stat-info">
+            <p>فرص جديدة</p>
+            <strong>7</strong>
+            <small>في انتظار المراجعة</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon green">🏥</div>
+          <div class="pro-stat-info">
+            <p>صيدليات نشطة</p>
+            <strong>34</strong>
+            <small>من 41 شريك</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon purple">📈</div>
+          <div class="pro-stat-info">
+            <p>نسبة الاستجابة</p>
+            <strong>83%</strong>
+            <small>↑ 5% هذا الشهر</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="pro-grid-2">
+
+        <!-- Market Alerts -->
+        <div class="pro-section">
+          <div class="pro-section-header">
+            <div class="pro-section-title"><span class="icon">📡</span> تنبيهات السوق</div>
+            <button class="pro-btn pro-btn-outline pro-btn-sm" style="color:#3b82f6;border-color:#3b82f6">عرض الكل</button>
+          </div>
+          <div>
+            <div class="pro-alert high">
+              <div class="pro-alert-info">
+                <strong>نقص حرج — أموكسيلين 500mg</strong>
+                <span>صيدلية الأمل · باب الوادي · الجزائر · متبقي: 3 وحدات</span>
+              </div>
+              <div style="display:flex;gap:.4rem">
+                <button class="pro-btn pro-btn-sm" style="background:#ef4444;color:white">تدخل عاجل</button>
+              </div>
+            </div>
+            <div class="pro-alert medium">
+              <div class="pro-alert-info">
+                <strong>مخزون منخفض — دولوبرين 500</strong>
+                <span>صيدلية النور · حسين داي · الجزائر · متبقي: 12 وحدة</span>
+              </div>
+              <div style="display:flex;gap:.4rem">
+                <button class="pro-btn pro-btn-ghost pro-btn-sm">متابعة</button>
+              </div>
+            </div>
+            <div class="pro-alert medium">
+              <div class="pro-alert-info">
+                <strong>طلب توريد — فيتامين D</strong>
+                <span>صيدلية الشفاء · القبة · الجزائر · كمية: 50 وحدة</span>
+              </div>
+              <div style="display:flex;gap:.4rem">
+                <button class="pro-btn pro-btn-ghost pro-btn-sm">قبول</button>
+                <button class="pro-btn pro-btn-danger pro-btn-sm">رفض</button>
+              </div>
+            </div>
+            <div class="pro-alert low">
+              <div class="pro-alert-info">
+                <strong>تذكير — انتهاء عقد شراكة</strong>
+                <span>صيدلية ابن رشد · بئر مراد رايس · ينتهي بعد 15 يوم</span>
+              </div>
+              <div>
+                <button class="pro-btn pro-btn-ghost pro-btn-sm">تجديد</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity + New Opportunities -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>⚡ آخر النشاطات</span>
+            </div>
+            <div class="pro-card-body">
+              <div class="pro-activity-list">
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon green">✅</div>
+                  <div class="pro-activity-text">
+                    <strong>قبول طلب توريد صيدلية النجم</strong>
+                    <span>منذ 20 دقيقة</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon blue">🤝</div>
+                  <div class="pro-activity-text">
+                    <strong>شراكة جديدة — صيدلية الأطلس</strong>
+                    <span>منذ 2 ساعة</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon orange">📦</div>
+                  <div class="pro-activity-text">
+                    <strong>توصيل دفعة أموكسيلين · 200 وحدة</strong>
+                    <span>أمس</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon purple">📊</div>
+                  <div class="pro-activity-text">
+                    <strong>تقرير شهري جاهز للتحميل</strong>
+                    <span>منذ يومين</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- New Opportunities -->
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>🎯 فرص جديدة</span>
+              <span class="pro-badge blue">7 فرص</span>
+            </div>
+            <div class="pro-card-body">
+              <div style="display:flex;flex-direction:column;gap:.65rem">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem;background:var(--blue-light);border-radius:var(--radius);border:1px solid #bfdbfe">
+                  <div>
+                    <strong style="font-size:.875rem;color:#1e40af">صيدلية الربيع · وهران</strong>
+                    <p style="font-size:.775rem;color:#64748b;margin-top:.1rem">تبحث عن مورد: مضادات حيوية</p>
+                  </div>
+                  <button class="pro-btn pro-btn-sm" style="background:#3b82f6;color:white">تواصل</button>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem;background:var(--primary-light);border-radius:var(--radius);border:1px solid #a7f3d0">
+                  <div>
+                    <strong style="font-size:.875rem;color:#065f46">صيدلية الشمس · قسنطينة</strong>
+                    <p style="font-size:.775rem;color:#64748b;margin-top:.1rem">تبحث عن مورد: أجهزة قياس</p>
+                  </div>
+                  <button class="pro-btn pro-btn-sm" style="background:var(--primary);color:white">تواصل</button>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.75rem;background:var(--orange-light);border-radius:var(--radius);border:1px solid #fde68a">
+                  <div>
+                    <strong style="font-size:.875rem;color:#92400e">صيدلية الزهور · عنابة</strong>
+                    <p style="font-size:.775rem;color:#64748b;margin-top:.1rem">تبحث عن مورد: مكملات غذائية</p>
+                  </div>
+                  <button class="pro-btn pro-btn-sm" style="background:var(--orange);color:white">تواصل</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Partners Table -->
+      <div class="pro-section">
+        <div class="pro-section-header">
+          <div class="pro-section-title"><span class="icon">🏥</span> الصيدليات الشريكة</div>
+          <button class="pro-btn pro-btn-outline pro-btn-sm" style="color:#3b82f6;border-color:#3b82f6">إدارة الشراكات</button>
+        </div>
+        <div class="pro-card">
+          <div class="pro-table-wrap">
+            <table class="pro-table">
+              <thead>
+                <tr>
+                  <th>الصيدلية</th>
+                  <th>الولاية</th>
+                  <th>المنتجات المورَّدة</th>
+                  <th>آخر طلب</th>
+                  <th>الحالة</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>صيدلية النور</strong></td>
+                  <td>الجزائر</td>
+                  <td>8 منتجات</td>
+                  <td>اليوم</td>
+                  <td><span class="pro-badge green">نشطة</span></td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+                <tr>
+                  <td><strong>صيدلية الأمل</strong></td>
+                  <td>الجزائر</td>
+                  <td>5 منتجات</td>
+                  <td>أمس</td>
+                  <td><span class="pro-badge green">نشطة</span></td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+                <tr>
+                  <td><strong>صيدلية الصحة</strong></td>
+                  <td>وهران</td>
+                  <td>12 منتج</td>
+                  <td>منذ 3 أيام</td>
+                  <td><span class="pro-badge orange">بانتظار التجديد</span></td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+                <tr>
+                  <td><strong>صيدلية ابن رشد</strong></td>
+                  <td>الجزائر</td>
+                  <td>3 منتجات</td>
+                  <td>منذ أسبوع</td>
+                  <td><span class="pro-badge red">تنتهي قريباً</span></td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تجديد</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+  function proLogout() {
+    sessionStorage.removeItem('shifaa_pro_access');
+    window.location.replace('professional-portal.html');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  document.querySelectorAll('.pro-nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (this.getAttribute('href') === '#') {
+        e.preventDefault();
+        document.querySelectorAll('.pro-nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        closeSidebar();
+      }
+    });
+  });
+</script>
+</body>
+</html>

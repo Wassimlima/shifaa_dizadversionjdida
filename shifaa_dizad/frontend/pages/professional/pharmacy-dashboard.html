@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الصيدلية — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../../css/pro-dashboard.css">
+</head>
+<body>
+<div class="pro-shell">
+
+  <!-- Sidebar Overlay (mobile) -->
+  <div class="pro-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="pro-sidebar" id="sidebar">
+    <div class="pro-sidebar-brand">
+      <div class="brand-logo">🏥</div>
+      <div class="brand-text">
+        <strong>صيدلية النور</strong>
+        <span>لوحة التحكم</span>
+      </div>
+    </div>
+
+    <nav class="pro-sidebar-nav">
+      <div class="pro-nav-label">القائمة الرئيسية</div>
+      <a class="pro-nav-item active" href="#">
+        <span class="nav-icon">🏠</span> الرئيسية
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">💊</span> المنتجات
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📋</span> الطلبات
+        <span class="nav-badge">5</span>
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🔔</span> الإشعارات
+        <span class="nav-badge">3</span>
+      </a>
+      <div class="pro-nav-label">التحليلات</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📊</span> الإحصائيات
+      </a>
+      <div class="pro-nav-label">الإعدادات</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">💳</span> الاشتراك
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">⚙️</span> الإعدادات
+      </a>
+      <a class="pro-nav-item" href="professional-portal.html">
+        <span class="nav-icon">🚪</span> البوابة المهنية
+      </a>
+    </nav>
+
+    <div class="pro-sidebar-footer">
+      <div class="pro-sidebar-user">
+        <div class="user-avatar">ص</div>
+        <div class="user-info">
+          <strong>صيدلية النور</strong>
+          <span>الاشتراك المهني</span>
+        </div>
+      </div>
+      <button onclick="proLogout()" style="width:100%;margin-top:.75rem;padding:.5rem;border:1.5px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);font-family:var(--font);font-size:.8rem;font-weight:700;cursor:pointer;transition:.2s" onmouseover="this.style.background='rgba(255,255,255,.15)'" onmouseout="this.style.background='rgba(255,255,255,.08)'">← العودة للبوابة</button>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="pro-main">
+    <!-- Top Bar -->
+    <header class="pro-topbar">
+      <div class="pro-topbar-left">
+        <button class="pro-topbar-menu-btn" onclick="toggleSidebar()">☰</button>
+        <div>
+          <h2>لوحة الصيدلية</h2>
+          <div class="pro-breadcrumb">الرئيسية › صيدلية النور</div>
+        </div>
+      </div>
+      <div class="pro-topbar-right">
+        <button class="pro-topbar-btn" title="الإشعارات">
+          🔔
+          <span class="pro-topbar-notif-dot"></span>
+        </button>
+        <button class="pro-topbar-btn" title="البحث">🔍</button>
+        <div class="pro-topbar-avatar" title="الملف الشخصي">ص</div>
+      </div>
+    </header>
+
+    <!-- Content -->
+    <div class="pro-content">
+
+      <!-- Welcome -->
+      <div class="pro-welcome">
+        <div class="pro-welcome-text">
+          <h2>مرحباً، صيدلية النور 👋</h2>
+          <p>آخر تسجيل دخول: اليوم في 09:30 · ولاية الجزائر العاصمة</p>
+        </div>
+        <div class="pro-welcome-badge">
+          <span class="dot"></span> نشط · الاشتراك المهني
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="pro-stats">
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon green">💊</div>
+          <div class="pro-stat-info">
+            <p>عدد المنتجات</p>
+            <strong>248</strong>
+            <small>↑ 12 هذا الشهر</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon blue">📋</div>
+          <div class="pro-stat-info">
+            <p>الطلبات النشطة</p>
+            <strong>5</strong>
+            <small>3 في الانتظار</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon orange">🔔</div>
+          <div class="pro-stat-info">
+            <p>الإشعارات</p>
+            <strong>8</strong>
+            <small>3 غير مقروءة</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon purple">💳</div>
+          <div class="pro-stat-info">
+            <p>حالة الاشتراك</p>
+            <strong style="font-size:1.1rem">مهني</strong>
+            <small>ينتهي 31/12/2025</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid Row -->
+      <div class="pro-grid-2">
+
+        <!-- Recent Activity -->
+        <div class="pro-section">
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>⚡ آخر النشاطات</span>
+              <button class="pro-btn pro-btn-ghost pro-btn-sm">عرض الكل</button>
+            </div>
+            <div class="pro-card-body">
+              <div class="pro-activity-list">
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon green">✅</div>
+                  <div class="pro-activity-text">
+                    <strong>تم تأكيد طلب — دولوبرين 500</strong>
+                    <span>منذ 15 دقيقة · المريض: أحمد بن علي</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon orange">⚠️</div>
+                  <div class="pro-activity-text">
+                    <strong>مخزون منخفض — أموكسيلين 250mg</strong>
+                    <span>منذ 1 ساعة · الكمية المتبقية: 8 وحدات</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon blue">📦</div>
+                  <div class="pro-activity-text">
+                    <strong>طلب توريد جديد بانتظار المراجعة</strong>
+                    <span>منذ 2 ساعة · المندوب: شركة فارماليك</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon green">🆕</div>
+                  <div class="pro-activity-text">
+                    <strong>تمت إضافة 14 منتجاً جديداً</strong>
+                    <span>أمس · استيراد CSV</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon red">❌</div>
+                  <div class="pro-activity-text">
+                    <strong>طلب ملغى — سيفالوسبورين</strong>
+                    <span>أمس · ألغاه المريض</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Actions + Performance -->
+        <div class="pro-section" style="display:flex;flex-direction:column;gap:1rem;">
+
+          <!-- Quick Actions -->
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>🚀 إجراءات سريعة</span>
+            </div>
+            <div class="pro-card-body">
+              <div class="pro-quick-actions">
+                <div class="pro-quick-action">
+                  <div class="qa-icon">➕</div>
+                  إضافة منتج
+                </div>
+                <div class="pro-quick-action">
+                  <div class="qa-icon">📤</div>
+                  استيراد CSV
+                </div>
+                <div class="pro-quick-action">
+                  <div class="qa-icon">📋</div>
+                  الطلبات
+                </div>
+                <div class="pro-quick-action">
+                  <div class="qa-icon">📊</div>
+                  تقرير
+                </div>
+                <div class="pro-quick-action">
+                  <div class="qa-icon">🔔</div>
+                  الإشعارات
+                </div>
+                <div class="pro-quick-action">
+                  <div class="qa-icon">⚙️</div>
+                  الإعدادات
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance -->
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>📈 ملخص الأداء</span>
+              <span class="pro-badge green">هذا الشهر</span>
+            </div>
+            <div class="pro-card-body">
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>معدل التوفر</span><strong>87%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:87%;background:var(--primary)"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>نسبة إتمام الطلبات</span><strong>92%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:92%;background:#3b82f6"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>استجابة المندوبين</span><strong>74%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:74%;background:var(--orange)"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="pro-section">
+        <div class="pro-section-header">
+          <div class="pro-section-title"><span class="icon">💊</span> المنتجات — آخر الإضافات</div>
+          <button class="pro-btn pro-btn-outline pro-btn-sm">إدارة المخزون</button>
+        </div>
+        <div class="pro-card">
+          <div class="pro-table-wrap">
+            <table class="pro-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>اسم المنتج</th>
+                  <th>التصنيف</th>
+                  <th>الكمية</th>
+                  <th>الحالة</th>
+                  <th>آخر تحديث</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>دولوبرين 500mg</strong></td>
+                  <td>مسكنات</td>
+                  <td>120</td>
+                  <td><span class="pro-badge green">متوفر</span></td>
+                  <td>اليوم</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تعديل</button></td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>أموكسيلين 250mg</strong></td>
+                  <td>مضادات حيوية</td>
+                  <td>8</td>
+                  <td><span class="pro-badge orange">محدود</span></td>
+                  <td>أمس</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تعديل</button></td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>فيتامين C 1000mg</strong></td>
+                  <td>مكملات غذائية</td>
+                  <td>0</td>
+                  <td><span class="pro-badge red">غير متوفر</span></td>
+                  <td>منذ 3 أيام</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تعديل</button></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>سيروم مرطب للوجه</strong></td>
+                  <td>باراصيدلية</td>
+                  <td>45</td>
+                  <td><span class="pro-badge green">متوفر</span></td>
+                  <td>اليوم</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تعديل</button></td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><strong>مضخة إنسولين</strong></td>
+                  <td>أجهزة طبية</td>
+                  <td>3</td>
+                  <td><span class="pro-badge orange">محدود</span></td>
+                  <td>منذ يومين</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تعديل</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Subscription -->
+      <div class="pro-section">
+        <div class="pro-sub-card">
+          <div>
+            <div class="pro-sub-plan">💳 الاشتراك المهني</div>
+            <div class="pro-sub-meta">ينتهي في 31 ديسمبر 2025 · 3 أشهر متبقية</div>
+            <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+              <span class="pro-badge green" style="background:rgba(52,211,153,.2);color:#34d399">✓ مخزون غير محدود</span>
+              <span class="pro-badge green" style="background:rgba(52,211,153,.2);color:#34d399">✓ تنبيهات السوق</span>
+              <span class="pro-badge green" style="background:rgba(52,211,153,.2);color:#34d399">✓ إحصائيات متقدمة</span>
+            </div>
+          </div>
+          <button class="pro-sub-upgrade">⬆ ترقية للـ Enterprise</button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+  function proLogout() {
+    sessionStorage.removeItem('shifaa_pro_access');
+    window.location.replace('professional-portal.html');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  document.querySelectorAll('.pro-nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (this.getAttribute('href') === '#') {
+        e.preventDefault();
+        document.querySelectorAll('.pro-nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        closeSidebar();
+      }
+    });
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.pro-perf-fill').forEach(bar => {
+      const w = bar.style.width; bar.style.width = '0';
+      requestAnimationFrame(() => { setTimeout(() => { bar.style.width = w; }, 100); });
+    });
+  }, 300);
+</script>
+</body>
+</html>

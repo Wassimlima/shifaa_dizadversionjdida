@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مخابر التحاليل — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/search.css">
+  <style>
+    .lab-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      transition: box-shadow var(--transition), border-color var(--transition);
+    }
+    .lab-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary); }
+    .lab-icon { font-size: 2rem; min-width: 3rem; text-align: center; }
+    .lab-info { flex: 1; }
+    .lab-name { font-weight: 800; font-size: 1rem; color: var(--text); }
+    .lab-name-ar { font-size: 0.85rem; color: var(--muted); margin-bottom: 0.4rem; }
+    .analysis-name { font-weight: 700; font-size: 1rem; color: var(--primary); }
+    .analysis-name-ar { font-size: 0.85rem; color: var(--muted); }
+    .lab-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; font-size: 0.82rem; color: var(--muted); }
+    .lab-meta span { display: flex; align-items: center; gap: 0.25rem; }
+    .lab-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; min-width: 120px; }
+    .price-tag { font-size: 1.2rem; font-weight: 900; color: var(--text); }
+    .price-label { font-size: 0.72rem; color: var(--muted); }
+    .prep-time { font-size: 0.78rem; color: var(--muted); text-align: center; }
+    .status-open  { color: #16a34a; font-weight: 700; font-size: 0.8rem; }
+    .status-closed { color: #dc2626; font-weight: 700; font-size: 0.8rem; }
+    .cat-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+    .cat-btn { padding: 0.4rem 1rem; border-radius: 9999px; border: 1.5px solid var(--border); background: white; font-family: var(--font); font-size: 0.85rem; cursor: pointer; transition: all var(--transition); }
+    .cat-btn.active, .cat-btn:hover { background: var(--primary); color: white; border-color: var(--primary); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <div class="logo-icon">💊</div>
+    <span>شفاء<span style="color:var(--primary)">ديزاد</span></span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="search.html">الأدوية والمستلزمات</a></li>
+    <li><a href="pharmacies.html">الصيدليات</a></li>
+    <li><a href="labs.html" class="active">مخابر التحاليل</a></li>
+    <li><a href="donations.html">التضامن الصحي</a></li>
+    <li><a href="pricing.html">الاشتراكات</a></li>
+    <li><a href="contact.html">تواصل معنا</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <a href="pricing.html" class="btn btn-primary btn-sm">اشتراك المهنيين</a>
+  </div>
+  <button class="navbar-toggle" id="navbar-toggle"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html">🏠 الرئيسية</a>
+  <a href="search.html">🔍 الأدوية والمستلزمات</a>
+  <a href="pharmacies.html">🏥 الصيدليات</a>
+  <a href="labs.html">🧪 مخابر التحاليل</a>
+  <a href="donations.html">🎁 التضامن الصحي</a>
+  <a href="pricing.html">💳 الاشتراكات</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <h1>🧪 مخابر التحاليل الطبية</h1>
+    <p>ابحث عن التحليل الذي تحتاجه وتحقق من السعر ووقت الانتظار</p>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <form id="lab-search-form" class="search-filters">
+      <input type="text" id="lab-query" class="input" placeholder="اسم التحليل، مثال: NFS، glycémie..." autocomplete="off">
+      <select id="lab-wilaya" class="input">
+        <option value="">كل الولايات</option>
+      </select>
+      <button type="submit" class="btn btn-primary">بحث</button>
+    </form>
+
+    <div class="cat-filters" id="lab-cat-filters">
+      <button class="cat-btn active" data-cat="">الكل</button>
+      <button class="cat-btn" data-cat="hematologie">🩸 أمراض الدم</button>
+      <button class="cat-btn" data-cat="biochimie">🧬 بيوكيمياء</button>
+      <button class="cat-btn" data-cat="microbiologie">🦠 ميكروبيولوجيا</button>
+      <button class="cat-btn" data-cat="hormonologie">💉 هرمونات</button>
+      <button class="cat-btn" data-cat="immunologie">🛡️ مناعة</button>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="results-header">
+      <span id="lab-results-count" class="results-count"></span>
+    </div>
+    <div id="lab-results">
+      <div class="spinner" style="margin:2rem auto"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">© 2025 شفاء ديزاد — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/labs.js"></script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>بوابة المهنيين — شفاء ديزاد</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #10b981;
+      --primary-dark: #059669;
+      --sidebar: #052e2b;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --bg: #f8fafc;
+      --font: 'Tajawal', sans-serif;
+      --radius: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+      --shadow: 0 4px 24px rgba(0,0,0,.08);
+      --transition: .2s ease;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+    /* Navbar */
+    .navbar {
+      background: white; border-bottom: 1px solid var(--border);
+      padding: 0 2rem; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .navbar-brand {
+      display: flex; align-items: center; gap: .6rem;
+      text-decoration: none; font-weight: 900; font-size: 1.15rem; color: var(--text);
+    }
+    .logo-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: linear-gradient(135deg,#10b981,#14b8a6);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 16px rgba(16,185,129,.25);
+    }
+    .logo-cross {
+      width: 16px; height: 16px; border: 2.5px solid white;
+      border-radius: 5px; transform: rotate(45deg); position: relative;
+    }
+    .logo-cross::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 7px; height: 7px; background: white; border-radius: 2px;
+      transform: translate(-50%,-50%);
+    }
+    .navbar-nav { display: flex; align-items: center; gap: .5rem; }
+    .btn { display: inline-flex; align-items: center; gap: .4rem; padding: .55rem 1.25rem; border-radius: var(--radius); font-family: var(--font); font-size: .875rem; font-weight: 700; cursor: pointer; text-decoration: none; transition: all var(--transition); border: 1.5px solid transparent; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-ghost { background: transparent; color: var(--muted); border-color: var(--border); }
+    .btn-ghost:hover { background: var(--bg); color: var(--text); }
+
+    /* Auth banner */
+    .auth-banner {
+      background: linear-gradient(135deg,#052e2b,#065f46);
+      padding: 1rem 2rem; text-align: center; color: white;
+      font-size: .875rem; display: flex; align-items: center; justify-content: center; gap: 1rem;
+    }
+    .auth-banner a { color: #6ee7b7; font-weight: 700; text-decoration: none; }
+    .auth-banner a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .portal-hero {
+      background: linear-gradient(135deg,#052e2b 0%,#065f46 60%,#10b981 100%);
+      padding: 5rem 2rem 4rem; text-align: center; color: white;
+    }
+    .portal-hero .badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 99px; padding: .4rem 1rem; font-size: .8rem; font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    .portal-hero h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 900; margin-bottom: 1rem; line-height: 1.2; }
+    .portal-hero p { font-size: 1.05rem; opacity: .85; max-width: 560px; margin: 0 auto; line-height: 1.7; }
+
+    /* Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* Dashboard grid */
+    .dashboards-section { padding: 4rem 2rem; }
+    .section-title { text-align: center; font-size: 1.5rem; font-weight: 900; margin-bottom: .5rem; }
+    .section-sub { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 3rem; }
+
+    .dashboard-grid {
+      display: grid; grid-template-columns: repeat(auto-fill,minmax(260px,1fr));
+      gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+    }
+    .dashboard-card {
+      background: white; border: 1.5px solid var(--border);
+      border-radius: var(--radius-xl); padding: 2rem 1.75rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      text-decoration: none; color: var(--text);
+      transition: all var(--transition);
+      position: relative; overflow: hidden;
+    }
+    .dashboard-card::before {
+      content: ''; position: absolute; top: 0; right: 0;
+      width: 100%; height: 4px; border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    .dashboard-card.pharmacy::before { background: linear-gradient(90deg,#10b981,#34d399); }
+    .dashboard-card.lab::before { background: linear-gradient(90deg,#8b5cf6,#a78bfa); }
+    .dashboard-card.medrep::before { background: linear-gradient(90deg,#3b82f6,#60a5fa); }
+    .dashboard-card.medservices::before { background: linear-gradient(90deg,#f59e0b,#fbbf24); }
+    .dashboard-card:hover { box-shadow: var(--shadow); transform: translateY(-4px); border-color: transparent; }
+    .dashboard-card.pharmacy:hover { border-color: #10b981; }
+    .dashboard-card.lab:hover { border-color: #8b5cf6; }
+    .dashboard-card.medrep:hover { border-color: #3b82f6; }
+    .dashboard-card.medservices:hover { border-color: #f59e0b; }
+
+    .card-icon {
+      width: 64px; height: 64px; border-radius: var(--radius-lg);
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem;
+    }
+    .pharmacy .card-icon { background: linear-gradient(135deg,#d1fae5,#a7f3d0); }
+    .lab .card-icon { background: linear-gradient(135deg,#ede9fe,#ddd6fe); }
+    .medrep .card-icon { background: linear-gradient(135deg,#dbeafe,#bfdbfe); }
+    .medservices .card-icon { background: linear-gradient(135deg,#fef3c7,#fde68a); }
+
+    .card-title { font-size: 1.05rem; font-weight: 900; }
+    .card-desc { font-size: .825rem; color: var(--muted); line-height: 1.65; flex: 1; }
+    .card-features { list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+    .card-features li { font-size: .78rem; color: var(--muted); display: flex; align-items: center; gap: .4rem; }
+    .card-features li::before { content: '✓'; color: var(--primary); font-weight: 900; font-size: .75rem; }
+    .card-cta {
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: .85rem; font-weight: 700; margin-top: .5rem;
+    }
+    .pharmacy .card-cta .cta-link { color: #059669; }
+    .lab .card-cta .cta-link { color: #7c3aed; }
+    .medrep .card-cta .cta-link { color: #2563eb; }
+    .medservices .card-cta .cta-link { color: #d97706; }
+    .card-cta .badge-sub { font-size: .7rem; font-weight: 700; padding: .2rem .6rem; border-radius: 99px; }
+    .pharmacy .badge-sub { background: #d1fae5; color: #065f46; }
+    .lab .badge-sub { background: #ede9fe; color: #5b21b6; }
+    .medrep .badge-sub { background: #dbeafe; color: #1e40af; }
+    .medservices .badge-sub { background: #fef3c7; color: #92400e; }
+
+    /* Flow steps */
+    .flow-section { background: linear-gradient(135deg,#f0fdf4,#ecfdf5); padding: 4rem 2rem; }
+    .flow-grid { display: flex; gap: 1.5rem; max-width: 900px; margin: 0 auto; flex-wrap: wrap; }
+    .flow-step { flex: 1; min-width: 180px; text-align: center; padding: 1.5rem 1rem; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--primary);
+      color: white; font-weight: 900; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;
+    }
+    .step-title { font-weight: 800; font-size: .9rem; margin-bottom: .4rem; }
+    .step-desc { font-size: .78rem; color: var(--muted); line-height: 1.6; }
+    .flow-arrow { display: flex; align-items: center; color: var(--primary); font-size: 1.5rem; font-weight: 900; padding-top: 1rem; }
+
+    /* Card CTA link */
+    .dashboard-card .cta-link { font-size: .82rem; }
+
+    /* Not subscribed overlay */
+    .not-subscribed-notice {
+      background: white; border: 2px solid #fde68a; border-radius: var(--radius-xl);
+      padding: 2.5rem 2rem; text-align: center; max-width: 600px; margin: 0 auto 3rem;
+      box-shadow: 0 4px 20px rgba(251,191,36,.15);
+    }
+    .ns-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .ns-title { font-size: 1.15rem; font-weight: 900; margin-bottom: .5rem; color: var(--text); }
+    .ns-desc { font-size: .875rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+
+    /* Footer */
+    .footer { background: var(--sidebar); color: rgba(255,255,255,.7); text-align: center; padding: 1.75rem 2rem; font-size: .8rem; margin-top: 4rem; }
+    .footer a { color: #6ee7b7; text-decoration: none; }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <a href="../../index.html" class="navbar-brand">
+    <div class="logo-icon"><div class="logo-cross"></div></div>
+    <span>شفاء<span style="color:var(--primary)">ديزاد</span></span>
+  </a>
+  <div class="navbar-nav">
+    <a href="../pricing.html" class="btn btn-ghost btn-sm">الاشتراكات</a>
+    <a href="../contact.html" class="btn btn-primary btn-sm">تواصل معنا</a>
+  </div>
+</nav>
+
+<!-- Auth notice bar -->
+<div class="auth-banner">
+  <span>🔒 هذه الصفحة مخصصة للمهنيين المشتركين فقط</span>
+  <a href="../pricing.html">اشترك الآن ←</a>
+</div>
+
+<!-- Hero -->
+<div class="portal-hero">
+  <div class="badge">🏥 بوابة المهنيين — شفاء ديزاد</div>
+  <h1>مرحباً بك في بوابة المهنيين</h1>
+  <p>اختر فئتك للوصول إلى لوحة التحكم الخاصة بك وإدارة نشاطك الصحي الرقمي</p>
+</div>
+
+<!-- Subscription notice -->
+<div class="dashboards-section">
+  <div class="container">
+
+    <div class="section-title">لوحات تحكم المهنيين</div>
+    <div class="section-sub">اختر فئتك المهنية للوصول مباشرة إلى لوحة التحكم الخاصة بها</div>
+
+    <div class="dashboard-grid">
+
+      <!-- Pharmacy -->
+      <div class="dashboard-card pharmacy">
+        <div class="card-icon">🏥</div>
+        <div>
+          <div class="card-title">لوحة الصيدلية</div>
+          <div class="card-desc">إدارة المخزون، استقبال الحجوزات ومتابعة نشاط صيدليتك في الوقت الفعلي</div>
+        </div>
+        <ul class="card-features">
+          <li>إدارة المخزون وتنبيهات النقص</li>
+          <li>الحجوزات والطلبات الإلكترونية</li>
+          <li>الشراكة مع المندوبين الطبيين</li>
+          <li>إحصاءات تفصيلية ومقارنات</li>
+        </ul>
+        <div class="card-cta">
+          <a href="pharmacy-dashboard.html" class="cta-link" style="text-decoration:none">استكشف لوحة الصيدلية ←</a>
+          <span class="badge-sub">صيدلاني</span>
+        </div>
+      </div>
+
+      <!-- Lab -->
+      <div class="dashboard-card lab">
+        <div class="card-icon">🧪</div>
+        <div>
+          <div class="card-title">لوحة المخبر</div>
+          <div class="card-desc">عرض التحاليل والأسعار، إدارة المواعيد وإبلاغ المرضى بالنتائج</div>
+        </div>
+        <ul class="card-features">
+          <li>قائمة كاملة بالتحاليل والأسعار</li>
+          <li>إدارة المواعيد والحجوزات</li>
+          <li>إشعارات النتائج للمرضى</li>
+          <li>ظهور مميز في نتائج البحث</li>
+        </ul>
+        <div class="card-cta">
+          <a href="laboratory-dashboard.html" class="cta-link" style="text-decoration:none">استكشف لوحة المخبر ←</a>
+          <span class="badge-sub">مخبر</span>
+        </div>
+      </div>
+
+      <!-- Med Rep -->
+      <div class="dashboard-card medrep">
+        <div class="card-icon">💼</div>
+        <div>
+          <div class="card-title">بوابة المندوب الطبي</div>
+          <div class="card-desc">تتبع منتجاتك، إدارة شبكة الصيدليات الشريكة وتحليل بيانات السوق</div>
+        </div>
+        <ul class="card-features">
+          <li>تنبيهات المخزون والطلبات</li>
+          <li>إدارة شراكات الصيدليات</li>
+          <li>طلبات إعادة التموين</li>
+          <li>إحصاءات المبيعات والسوق</li>
+        </ul>
+        <div class="card-cta">
+          <a href="medrep-dashboard.html" class="cta-link" style="text-decoration:none">استكشف بوابة المندوب ←</a>
+          <span class="badge-sub">مندوب</span>
+        </div>
+      </div>
+
+      <!-- Medical Services -->
+      <div class="dashboard-card medservices">
+        <div class="card-icon">🩺</div>
+        <div>
+          <div class="card-title">لوحة الخدمات الطبية</div>
+          <div class="card-desc">باراصيدلية، موردو المعدات، تقويمية، كراسي متحركة، رعاية منزلية وكينيزيولوجيا</div>
+        </div>
+        <ul class="card-features">
+          <li>باراصيدلية وتجميل طبي</li>
+          <li>موردو المعدات والأجهزة الطبية</li>
+          <li>أجهزة تقويمية وكراسي متحركة</li>
+          <li>رعاية منزلية وكينيزيولوجيا</li>
+        </ul>
+        <div class="card-cta">
+          <a href="medical-services-dashboard.html" class="cta-link" style="text-decoration:none">استكشف لوحة الخدمات ←</a>
+          <span class="badge-sub">خدمات طبية</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Subscription flow -->
+<div class="flow-section">
+  <div class="container">
+    <div class="section-title" style="margin-bottom:.5rem">كيف تحصل على الوصول؟</div>
+    <div class="section-sub" style="margin-bottom:2.5rem">4 خطوات بسيطة للانضمام إلى شبكة شفاء ديزاد المهنية</div>
+    <div class="flow-grid">
+      <div class="flow-step">
+        <div class="step-num">١</div>
+        <div class="step-title">اختر الباقة</div>
+        <div class="step-desc">توجه إلى صفحة الاشتراكات واختر الباقة المناسبة لفئتك المهنية</div>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step">
+        <div class="step-num">٢</div>
+        <div class="step-title">استكشف الباقات</div>
+        <div class="step-desc">اطّلع على الباقات المتاحة لكل فئة مهنية واختر ما يناسب احتياجاتك</div>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step">
+        <div class="step-num">٣</div>
+        <div class="step-title">تصفّح لوحة التحكم</div>
+        <div class="step-desc">ادخل مباشرة إلى لوحة التحكم الخاصة بفئتك وتعرّف على كل مميزاتها</div>
+      </div>
+      <div class="flow-arrow">←</div>
+      <div class="flow-step">
+        <div class="step-num">٤</div>
+        <div class="step-title">تواصل معنا</div>
+        <div class="step-desc">للاشتراك الفعلي تواصل مع الفريق وسنساعدك في البدء</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="../pricing.html" class="btn btn-primary btn-lg" style="margin-left:.75rem">عرض الباقات ←</a>
+      <a href="../contact.html" class="btn btn-ghost btn-lg">تواصل مع الفريق</a>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <p>© 2025 شفاء ديزاد — بوابة المهنيين | <a href="../../index.html">العودة للرئيسية</a> | <a href="../pricing.html">الاشتراكات</a></p>
+</footer>
+
+</body>
+</html>

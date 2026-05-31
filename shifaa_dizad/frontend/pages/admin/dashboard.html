@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة الإدارة — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../../css/pro-dashboard.css">
+  <style>
+    :root { --sidebar-bg: #0a0f1e; }
+    .pro-sidebar-brand .brand-logo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    .pro-sidebar-user .user-avatar { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    .pro-topbar-avatar { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+    .pro-welcome { background: linear-gradient(135deg, #1e1b4b, #312e81); }
+    .admin-section-btn { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; }
+
+    /* Section menu items */
+    .admin-menu-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .7rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: background var(--transition);
+      font-size: .875rem;
+    }
+    .admin-menu-item:hover { background: var(--muted-bg); }
+    .admin-menu-item.active { background: #ede9fe; color: #4f46e5; font-weight: 700; }
+    .admin-menu-left { display: flex; align-items: center; gap: .65rem; }
+    .admin-menu-icon { font-size: 1.05rem; width: 22px; text-align: center; }
+    .admin-menu-count {
+      background: var(--muted-bg); color: var(--muted);
+      font-size: .7rem; font-weight: 800;
+      padding: .1rem .5rem; border-radius: var(--radius-full);
+    }
+    .admin-menu-count.alert { background: var(--red-light); color: var(--red); }
+
+    /* System status */
+    .sys-status-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: .65rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .85rem;
+    }
+    .sys-status-item:last-child { border-bottom: none; }
+    .sys-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; margin-left: .5rem; }
+    .sys-dot.ok     { background: #10b981; box-shadow: 0 0 6px rgba(16,185,129,.4); }
+    .sys-dot.warn   { background: #f59e0b; }
+    .sys-dot.error  { background: #ef4444; }
+  </style>
+</head>
+<body>
+<div class="pro-shell">
+
+  <div class="pro-sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+  <!-- Sidebar -->
+  <aside class="pro-sidebar" id="sidebar">
+    <div class="pro-sidebar-brand">
+      <div class="brand-logo">🛡️</div>
+      <div class="brand-text">
+        <strong>شفاء ديزاد</strong>
+        <span>لوحة الإدارة</span>
+      </div>
+    </div>
+
+    <nav class="pro-sidebar-nav">
+      <div class="pro-nav-label">الإدارة</div>
+      <a class="pro-nav-item active" href="#">
+        <span class="nav-icon">📊</span> Dashboard
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">👥</span> المستخدمون
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🏥</span> الصيدليات
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🧪</span> المخابر
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">💼</span> المندوبون الطبيون
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">🩺</span> الخدمات الطبية
+      </a>
+      <div class="pro-nav-label">الإيرادات والتسويق</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📢</span> الإعلانات
+        <span class="nav-badge" style="background:#6366f1">3</span>
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">💳</span> الاشتراكات
+      </a>
+      <div class="pro-nav-label">التقارير والنظام</div>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📈</span> التحليلات
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">📋</span> التقارير
+      </a>
+      <a class="pro-nav-item" href="#">
+        <span class="nav-icon">⚙️</span> إعدادات المنصة
+      </a>
+    </nav>
+
+    <div class="pro-sidebar-footer">
+      <div class="pro-sidebar-user">
+        <div class="user-avatar">A</div>
+        <div class="user-info">
+          <strong>Admin</strong>
+          <span>المدير العام</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="pro-main">
+    <header class="pro-topbar">
+      <div class="pro-topbar-left">
+        <button class="pro-topbar-menu-btn" onclick="toggleSidebar()">☰</button>
+        <div>
+          <h2>لوحة الإدارة</h2>
+          <div class="pro-breadcrumb">Admin Dashboard · شفاء ديزاد</div>
+        </div>
+      </div>
+      <div class="pro-topbar-right">
+        <button class="pro-topbar-btn">🔔<span class="pro-topbar-notif-dot"></span></button>
+        <button class="pro-topbar-btn">⚙️</button>
+        <div class="pro-topbar-avatar" title="Admin">A</div>
+      </div>
+    </header>
+
+    <div class="pro-content">
+
+      <!-- Welcome -->
+      <div class="pro-welcome">
+        <div class="pro-welcome-text">
+          <h2>مرحباً في لوحة الإدارة 🛡️</h2>
+          <p>نظرة شاملة على المنصة · آخر تحديث: منذ 5 دقائق</p>
+        </div>
+        <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center">
+          <div class="pro-welcome-badge">
+            <span class="dot" style="background:#818cf8"></span> جميع الأنظمة تعمل
+          </div>
+          <button class="pro-btn pro-btn-sm" style="background:rgba(255,255,255,.15);color:white;border:1px solid rgba(255,255,255,.25)">تقرير سريع</button>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="pro-stats">
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon blue">👥</div>
+          <div class="pro-stat-info">
+            <p>إجمالي المستخدمين</p>
+            <strong>2,847</strong>
+            <small>↑ 124 هذا الشهر</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon green">🏥</div>
+          <div class="pro-stat-info">
+            <p>إجمالي الصيدليات</p>
+            <strong>488</strong>
+            <small>↑ 12 جديدة</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon purple">🧪</div>
+          <div class="pro-stat-info">
+            <p>إجمالي المخابر</p>
+            <strong>163</strong>
+            <small>↑ 8 جديدة</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon orange">💼</div>
+          <div class="pro-stat-info">
+            <p>المندوبون</p>
+            <strong>241</strong>
+            <small>↑ 31 جديد</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Stats Row -->
+      <div class="pro-stats" style="margin-top:-1rem">
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon teal">💊</div>
+          <div class="pro-stat-info">
+            <p>المنتجات المسجلة</p>
+            <strong>12.4K</strong>
+            <small>↑ 340 هذا الشهر</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon green">💳</div>
+          <div class="pro-stat-info">
+            <p>الاشتراكات النشطة</p>
+            <strong>312</strong>
+            <small>↑ 28 هذا الشهر</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon purple">📢</div>
+          <div class="pro-stat-info">
+            <p>الإعلانات قيد المراجعة</p>
+            <strong>3</strong>
+            <small>بانتظار الموافقة</small>
+          </div>
+        </div>
+        <div class="pro-stat-card">
+          <div class="pro-stat-icon blue">🔍</div>
+          <div class="pro-stat-info">
+            <p>عمليات البحث اليوم</p>
+            <strong>4.2K</strong>
+            <small>↑ 18% عن أمس</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid -->
+      <div class="pro-grid-2">
+
+        <!-- Platform Overview -->
+        <div class="pro-section">
+          <div class="pro-section-header">
+            <div class="pro-section-title"><span class="icon">🗂️</span> نظرة عامة على المنصة</div>
+          </div>
+          <div class="pro-card">
+            <div class="pro-card-body">
+              <div class="admin-menu-item active">
+                <div class="admin-menu-left"><span class="admin-menu-icon">👥</span> المستخدمون</div>
+                <span class="admin-menu-count">2,847</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">🏥</span> الصيدليات</div>
+                <span class="admin-menu-count">488</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">🧪</span> المخابر</div>
+                <span class="admin-menu-count">163</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">💼</span> المندوبون الطبيون</div>
+                <span class="admin-menu-count">241</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">🩺</span> مزودو الخدمات الطبية</div>
+                <span class="admin-menu-count">78</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">📢</span> إعلانات بانتظار الموافقة</div>
+                <span class="admin-menu-count alert">3</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">💳</span> اشتراكات منتهية قريباً</div>
+                <span class="admin-menu-count alert">14</span>
+              </div>
+              <div class="admin-menu-item">
+                <div class="admin-menu-left"><span class="admin-menu-icon">🎁</span> تبرعات نشطة</div>
+                <span class="admin-menu-count">92</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity + System Status -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>⚡ النشاط الأخير</span>
+              <button class="pro-btn pro-btn-ghost pro-btn-sm">السجل الكامل</button>
+            </div>
+            <div class="pro-card-body">
+              <div class="pro-activity-list">
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon green">✅</div>
+                  <div class="pro-activity-text">
+                    <strong>تم التحقق من صيدلية الرحمة · وهران</strong>
+                    <span>منذ 10 دقائق</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon blue">👤</div>
+                  <div class="pro-activity-text">
+                    <strong>مستخدم جديد — مخبر العلوم · قسنطينة</strong>
+                    <span>منذ 25 دقيقة</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon purple">📢</div>
+                  <div class="pro-activity-text">
+                    <strong>طلب إعلان جديد — BioSanté Algeria</strong>
+                    <span>منذ 1 ساعة</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon orange">💳</div>
+                  <div class="pro-activity-text">
+                    <strong>تجديد اشتراك — صيدلية ابن سينا</strong>
+                    <span>منذ 2 ساعة</span>
+                  </div>
+                </div>
+                <div class="pro-activity-item">
+                  <div class="pro-activity-icon red">🚫</div>
+                  <div class="pro-activity-text">
+                    <strong>إعلان مرفوض — محتوى غير مطابق</strong>
+                    <span>منذ 3 ساعات</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- System Status -->
+          <div class="pro-card">
+            <div class="pro-card-header">
+              <span>🖥️ حالة النظام</span>
+              <span class="pro-badge green">جميع الأنظمة تعمل</span>
+            </div>
+            <div class="pro-card-body">
+              <div class="sys-status-item">
+                <span><span class="sys-dot ok"></span> قاعدة البيانات</span>
+                <strong style="color:#10b981;font-size:.8rem">متصل · 12ms</strong>
+              </div>
+              <div class="sys-status-item">
+                <span><span class="sys-dot ok"></span> خادم API</span>
+                <strong style="color:#10b981;font-size:.8rem">يعمل · 99.8%</strong>
+              </div>
+              <div class="sys-status-item">
+                <span><span class="sys-dot ok"></span> بحث الأدوية</span>
+                <strong style="color:#10b981;font-size:.8rem">نشط · 4.2K/يوم</strong>
+              </div>
+              <div class="sys-status-item">
+                <span><span class="sys-dot warn"></span> رفع الوصفات (AI)</span>
+                <strong style="color:#f59e0b;font-size:.8rem">تحت الإنشاء</strong>
+              </div>
+              <div class="sys-status-item">
+                <span><span class="sys-dot ok"></span> نظام الإشعارات</span>
+                <strong style="color:#10b981;font-size:.8rem">يعمل</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Analytics Performance -->
+      <div class="pro-section">
+        <div class="pro-section-header">
+          <div class="pro-section-title"><span class="icon">📈</span> أداء المنصة</div>
+          <span class="pro-badge" style="background:#ede9fe;color:#4f46e5">هذا الشهر</span>
+        </div>
+        <div class="pro-grid-3">
+          <div class="pro-card">
+            <div class="pro-card-body">
+              <div class="pro-section-title" style="margin-bottom:.75rem">🔍 أكثر الأدوية بحثاً</div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>دولوبرين</span><strong>2,140</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:90%;background:var(--primary)"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>أموكسيلين</span><strong>1,820</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:76%;background:#3b82f6"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>فيتامين D</span><strong>1,540</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:65%;background:#8b5cf6"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>سيفالوسبورين</span><strong>980</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:41%;background:var(--orange)"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pro-card">
+            <div class="pro-card-body">
+              <div class="pro-section-title" style="margin-bottom:.75rem">📍 أكثر الولايات نشاطاً</div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>الجزائر العاصمة</span><strong>38%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:88%;background:var(--primary)"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>وهران</span><strong>19%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:55%;background:#3b82f6"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>قسنطينة</span><strong>14%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:42%;background:#8b5cf6"></div></div>
+              </div>
+              <div class="pro-perf">
+                <div class="pro-perf-header"><span>عنابة</span><strong>9%</strong></div>
+                <div class="pro-perf-bar"><div class="pro-perf-fill" style="width:28%;background:var(--orange)"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pro-card">
+            <div class="pro-card-body">
+              <div class="pro-section-title" style="margin-bottom:.75rem">💳 توزيع الاشتراكات</div>
+              <div style="display:flex;flex-direction:column;gap:.6rem">
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.65rem;background:var(--primary-light);border-radius:var(--radius);border:1px solid #a7f3d0">
+                  <span style="font-size:.85rem;font-weight:600;color:#065f46">Enterprise</span>
+                  <span class="pro-badge green">48</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.65rem;background:var(--blue-light);border-radius:var(--radius);border:1px solid #bfdbfe">
+                  <span style="font-size:.85rem;font-weight:600;color:#1e40af">مهني</span>
+                  <span class="pro-badge blue">124</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.65rem;background:var(--purple-light);border-radius:var(--radius);border:1px solid #ddd6fe">
+                  <span style="font-size:.85rem;font-weight:600;color:#5b21b6">أساسي</span>
+                  <span class="pro-badge purple">140</span>
+                </div>
+                <div style="display:flex;align-items:center;justify-content:space-between;padding:.65rem;background:var(--muted-bg);border-radius:var(--radius);border:1px solid var(--border)">
+                  <span style="font-size:.85rem;font-weight:600;color:var(--muted)">مجاني</span>
+                  <span class="pro-badge muted">1,290</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Users Table -->
+      <div class="pro-section">
+        <div class="pro-section-header">
+          <div class="pro-section-title"><span class="icon">👥</span> أحدث المستخدمين</div>
+          <button class="pro-btn pro-btn-sm" style="background:linear-gradient(135deg,#6366f1,#4f46e5);color:white">إدارة المستخدمين</button>
+        </div>
+        <div class="pro-card">
+          <div class="pro-table-wrap">
+            <table class="pro-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>الاسم</th>
+                  <th>الدور</th>
+                  <th>الولاية</th>
+                  <th>حالة التحقق</th>
+                  <th>تاريخ التسجيل</th>
+                  <th>إجراء</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>2847</td>
+                  <td><strong>مخبر العلوم</strong></td>
+                  <td><span class="pro-badge purple">مخبر</span></td>
+                  <td>قسنطينة</td>
+                  <td><span class="pro-badge orange">بانتظار التحقق</span></td>
+                  <td>اليوم</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">مراجعة</button></td>
+                </tr>
+                <tr>
+                  <td>2846</td>
+                  <td><strong>صيدلية الرحمة</strong></td>
+                  <td><span class="pro-badge green">صيدلية</span></td>
+                  <td>وهران</td>
+                  <td><span class="pro-badge green">محقق</span></td>
+                  <td>اليوم</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+                <tr>
+                  <td>2845</td>
+                  <td><strong>أحمد بن علي</strong></td>
+                  <td><span class="pro-badge muted">مريض</span></td>
+                  <td>الجزائر</td>
+                  <td><span class="pro-badge green">محقق</span></td>
+                  <td>أمس</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+                <tr>
+                  <td>2844</td>
+                  <td><strong>BioSanté Algeria</strong></td>
+                  <td><span class="pro-badge orange">خدمات طبية</span></td>
+                  <td>الجزائر</td>
+                  <td><span class="pro-badge orange">بانتظار التحقق</span></td>
+                  <td>أمس</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">مراجعة</button></td>
+                </tr>
+                <tr>
+                  <td>2843</td>
+                  <td><strong>كريم مصطفى</strong></td>
+                  <td><span class="pro-badge blue">مندوب طبي</span></td>
+                  <td>عنابة</td>
+                  <td><span class="pro-badge green">محقق</span></td>
+                  <td>منذ يومين</td>
+                  <td><button class="pro-btn pro-btn-ghost pro-btn-sm">تفاصيل</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('open');
+  }
+  function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('sidebarOverlay').classList.remove('open');
+  }
+  document.querySelectorAll('.pro-nav-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      if (this.getAttribute('href') === '#') {
+        e.preventDefault();
+        document.querySelectorAll('.pro-nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        closeSidebar();
+      }
+    });
+  });
+  document.querySelectorAll('.admin-menu-item').forEach(item => {
+    item.addEventListener('click', function() {
+      document.querySelectorAll('.admin-menu-item').forEach(i => i.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+  setTimeout(() => {
+    document.querySelectorAll('.pro-perf-fill').forEach(bar => {
+      const w = bar.style.width; bar.style.width = '0';
+      requestAnimationFrame(() => { setTimeout(() => { bar.style.width = w; }, 100); });
+    });
+  }, 300);
+</script>
+</body>
+</html>

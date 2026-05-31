@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>التضامن الصحي — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/donations.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <div class="logo-icon">💊</div>
+    <span>شفاء<span style="color:var(--primary)">ديزاد</span></span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="search.html">الأدوية والمستلزمات</a></li>
+    <li><a href="pharmacies.html">الصيدليات</a></li>
+    <li><a href="labs.html">مخابر التحاليل</a></li>
+    <li><a href="donations.html" class="active">التضامن الصحي</a></li>
+    <li><a href="pricing.html">الاشتراكات</a></li>
+    <li><a href="contact.html">تواصل معنا</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <a href="pricing.html" class="btn btn-primary btn-sm">اشتراك المهنيين</a>
+  </div>
+  <button class="navbar-toggle" id="navbar-toggle"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html">🏠 الرئيسية</a>
+  <a href="search.html">🔍 الأدوية والمستلزمات</a>
+  <a href="donations.html">🎁 التضامن الصحي</a>
+  <a href="contact.html">📞 تواصل معنا</a>
+</div>
+
+<div class="donations-page">
+  <div class="container">
+    <div class="donations-header-row">
+      <div>
+        <h1>🎁 التضامن الصحي</h1>
+        <p>تبرع بمعداتك الطبية غير المستعملة للمحتاجين</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:0.75rem">
+        <span id="donations-count" style="font-size:0.875rem;color:var(--muted)"></span>
+        <button class="btn btn-primary" data-modal-open="donation-modal">+ إضافة تبرع</button>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <label style="font-weight:600;font-size:0.875rem">تصفية حسب الولاية:</label>
+      <select id="wilaya-filter-d" style="padding:0.5rem 2.5rem 0.5rem 0.85rem;border:1.5px solid var(--border);border-radius:var(--radius);font-family:var(--font);appearance:none;background:white;cursor:pointer;font-size:0.875rem;outline:none">
+        <option value="">جميع الولايات</option>
+      </select>
+    </div>
+
+    <div class="grid-auto" id="donations-grid">
+      <div class="skeleton" style="height:160px;border-radius:var(--radius-xl)"></div>
+      <div class="skeleton" style="height:160px;border-radius:var(--radius-xl)"></div>
+      <div class="skeleton" style="height:160px;border-radius:var(--radius-xl)"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Donation Modal -->
+<div class="modal-overlay hidden" id="donation-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>🎁 إضافة تبرع جديد</h3>
+      <button class="modal-close" data-modal-close="donation-modal">✕</button>
+    </div>
+    <div class="modal-body">
+      <form id="donation-form">
+        <div class="grid-2">
+          <div class="input-group">
+            <label>الاسم بالعربية</label>
+            <input type="text" id="d-name-ar" class="input" placeholder="كرسي متحرك" required>
+          </div>
+          <div class="input-group">
+            <label>الاسم بالفرنسية / الإنجليزية</label>
+            <input type="text" id="d-name-en" class="input" placeholder="Wheelchair" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>الوصف (اختياري)</label>
+          <textarea id="d-desc" class="input" rows="2" placeholder="وصف مختصر للحالة..."></textarea>
+        </div>
+        <div class="input-group">
+          <label>صورة المنتج (اختياري)</label>
+          <input type="file" id="d-image" class="input" accept="image/*" style="padding:0.4rem">
+          <div id="d-img-preview" style="margin-top:0.5rem;display:none">
+            <img id="d-img-preview-src" style="max-height:120px;border-radius:var(--radius);border:1px solid var(--border)" alt="معاينة">
+          </div>
+        </div>
+        <div class="grid-2">
+          <div class="input-group">
+            <label>الولاية</label>
+            <select id="d-wilaya" class="input select" required>
+              <option value="">اختر الولاية</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>المدينة</label>
+            <input type="text" id="d-city" class="input" placeholder="المدينة" required>
+          </div>
+        </div>
+        <div class="input-group">
+          <label>اسم المتبرع</label>
+          <input type="text" id="d-donor" class="input" placeholder="الاسم الكامل" required>
+        </div>
+        <div class="grid-2">
+          <div class="input-group">
+            <label>الحالة</label>
+            <select id="d-condition" class="input select" required>
+              <option value="">اختر الحالة</option>
+              <option value="new">جديد</option>
+              <option value="good">جيد</option>
+              <option value="fair">مقبول</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>التصنيف</label>
+            <select id="d-category" class="input select" required>
+              <option value="">اختر التصنيف</option>
+              <option value="medicine">دواء</option>
+              <option value="device">جهاز طبي</option>
+              <option value="special_needs">احتياجات خاصة</option>
+              <option value="parapharmacy">شبه صيدلاني</option>
+              <option value="other">أخرى</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center">إضافة التبرع</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">© 2025 شفاء ديزاد — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/donations.js"></script>
+</body>
+</html>

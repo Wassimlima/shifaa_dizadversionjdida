@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاشتراكات — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/pricing.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <div class="logo-icon">💊</div>
+    <span>شفاء<span style="color:var(--primary)">ديزاد</span></span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="search.html">الأدوية والمستلزمات</a></li>
+    <li><a href="pharmacies.html">الصيدليات</a></li>
+    <li><a href="labs.html">مخابر التحاليل</a></li>
+    <li><a href="donations.html">التضامن الصحي</a></li>
+    <li><a href="pricing.html" class="active">الاشتراكات</a></li>
+    <li><a href="contact.html">تواصل معنا</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <a href="professional/professional-portal.html" class="btn btn-ghost btn-sm">بوابة المهنيين</a>
+    <a href="contact.html" class="btn btn-primary btn-sm">تواصل معنا</a>
+  </div>
+  <button class="navbar-toggle" id="navbar-toggle"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html">🏠 الرئيسية</a>
+  <a href="search.html">🔍 الأدوية والمستلزمات</a>
+  <a href="pharmacies.html">🏥 الصيدليات</a>
+  <a href="labs.html">🧪 مخابر التحاليل</a>
+  <a href="donations.html">🎁 التضامن الصحي</a>
+  <a href="pricing.html">💳 الاشتراكات</a>
+  <a href="contact.html">📞 تواصل معنا</a>
+</div>
+
+<div class="pricing-page">
+  <div class="container">
+    <div class="pricing-header animate-up">
+      <div class="label">💳 الاشتراكات المهنية</div>
+      <h1>باقات مناسبة لكل مهني</h1>
+      <p>اختر فئتك لاستكشاف الباقات المتاحة — انقر على أي باقة للوصول مباشرة إلى لوحة التحكم</p>
+    </div>
+
+    <!-- Role Selection -->
+    <div id="role-selector" style="display:flex;gap:1.25rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem">
+      <button class="role-btn" data-role="pharmacy" onclick="showRole('pharmacy')" style="flex:1;min-width:160px;max-width:220px;padding:1.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-lg);background:white;cursor:pointer;text-align:center;transition:all 0.2s;font-family:var(--font)">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem">🏥</div>
+        <div style="font-weight:800;font-size:1rem;color:var(--text)">صيدلاني</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:0.25rem">إدارة صيدليتك ومخزونك</div>
+      </button>
+      <button class="role-btn" data-role="medrep" onclick="showRole('medrep')" style="flex:1;min-width:160px;max-width:220px;padding:1.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-lg);background:white;cursor:pointer;text-align:center;transition:all 0.2s;font-family:var(--font)">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem">👔</div>
+        <div style="font-weight:800;font-size:1rem;color:var(--text)">مندوب طبي</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:0.25rem">تتبع منتجاتك وشراكاتك</div>
+      </button>
+      <button class="role-btn" data-role="lab" onclick="showRole('lab')" style="flex:1;min-width:160px;max-width:220px;padding:1.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-lg);background:white;cursor:pointer;text-align:center;transition:all 0.2s;font-family:var(--font)">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem">🧪</div>
+        <div style="font-weight:800;font-size:1rem;color:var(--text)">مخبر تحاليل</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:0.25rem">عرض خدماتك وتحاليلك</div>
+      </button>
+      <button class="role-btn" data-role="medservices" onclick="showRole('medservices')" style="flex:1;min-width:160px;max-width:220px;padding:1.5rem 1rem;border:2px solid var(--border);border-radius:var(--radius-lg);background:white;cursor:pointer;text-align:center;transition:all 0.2s;font-family:var(--font)">
+        <div style="font-size:2.5rem;margin-bottom:0.5rem">🩺</div>
+        <div style="font-weight:800;font-size:1rem;color:var(--text)">خدمات طبية</div>
+        <div style="font-size:0.82rem;color:var(--muted);margin-top:0.25rem">باراصيدلية وأجهزة طبية</div>
+      </button>
+    </div>
+
+    <!-- Pharmacy Plans -->
+    <div id="plans-pharmacy" class="plans-section" style="display:none">
+      <h2 style="text-align:center;font-weight:900;margin-bottom:2rem">🏥 باقات الصيدلاني</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card animate-up anim-delay-1">
+          <div class="pricing-plan"><span>🆓 الباقة المجانية</span><span class="badge badge-muted">مجاني</span></div>
+          <div class="pricing-price"><strong>0</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>تسجيل الصيدلية في الدليل</li>
+            <li>حتى 50 منتج في المخزون</li>
+            <li>استقبال الحجوزات</li>
+            <li>صفحة عامة للصيدلية</li>
+            <li>دعم عبر البريد</li>
+          </ul>
+          <a href="professional/pharmacy-dashboard.html" class="btn btn-ghost btn-lg">استكشف لوحة الصيدلية</a>
+        </div>
+        <div class="pricing-card featured animate-up anim-delay-2">
+          <div class="pricing-popular">⭐ الأكثر شيوعاً</div>
+          <div class="pricing-plan"><span>💎 الباقة الاحترافية</span><span class="badge badge-primary">Pro</span></div>
+          <div class="pricing-price">
+            <div><strong>3,900</strong><span>DA / شهر</span></div>
+            <div style="font-size:0.8rem;color:var(--primary);margin-top:0.25rem">أو 39,000 DA / سنة (وفر 15%)</div>
+          </div>
+          <ul class="pricing-features">
+            <li>مخزون غير محدود</li>
+            <li>ظهور مميز في نتائج البحث</li>
+            <li>إشعارات المخزون المنخفض</li>
+            <li>إحصاءات تفصيلية</li>
+            <li>نظام الشراكة مع المندوبين</li>
+            <li>لوحة التحكم الكاملة</li>
+            <li>دعم ذو أولوية</li>
+          </ul>
+          <a href="professional/pharmacy-dashboard.html" class="btn btn-primary btn-lg">استكشف لوحة الصيدلية ←</a>
+        </div>
+        <div class="pricing-card animate-up anim-delay-3">
+          <div class="pricing-plan"><span>🏢 الباقة المؤسسية</span><span class="badge badge-secondary">Enterprise</span></div>
+          <div class="pricing-price"><strong>9,900</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>كل مميزات الباقة الاحترافية</li>
+            <li>إدارة سلسلة صيدليات</li>
+            <li>API مخصص</li>
+            <li>تقارير مخصصة</li>
+            <li>مدير حساب مخصص</li>
+            <li>دعم 24/7</li>
+            <li>تكامل مع أنظمة ERP</li>
+          </ul>
+          <a href="professional/pharmacy-dashboard.html" class="btn btn-outline btn-lg">استكشف لوحة الصيدلية</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Med Rep Plans -->
+    <div id="plans-medrep" class="plans-section" style="display:none">
+      <h2 style="text-align:center;font-weight:900;margin-bottom:2rem">👔 باقات المندوب الطبي</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card animate-up anim-delay-1">
+          <div class="pricing-plan"><span>🆓 الباقة المجانية</span><span class="badge badge-muted">مجاني</span></div>
+          <div class="pricing-price"><strong>0</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>ملف مندوب في الدليل</li>
+            <li>ربط بصيدليتين شريكتين</li>
+            <li>تنبيهات سوق محدودة</li>
+            <li>دعم عبر البريد</li>
+          </ul>
+          <a href="professional/medrep-dashboard.html" class="btn btn-ghost btn-lg">استكشف بوابة المندوب</a>
+        </div>
+        <div class="pricing-card featured animate-up anim-delay-2">
+          <div class="pricing-popular">💰 الأكثر طلباً</div>
+          <div class="pricing-plan"><span>📅 الباقة الشهرية</span><span class="badge badge-muted">شهري</span></div>
+          <div class="pricing-price"><strong>2,500</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>بوابة المندوب الطبي الكاملة</li>
+            <li>متابعة مخزون المنتجات</li>
+            <li>إدارة الشراكات مع الصيدليات</li>
+            <li>تنبيهات المخزون المنخفض</li>
+            <li>طلبات إعادة التموين</li>
+            <li>إحصاءات المبيعات</li>
+          </ul>
+          <a href="professional/medrep-dashboard.html" class="btn btn-primary btn-lg">استكشف بوابة المندوب ←</a>
+        </div>
+        <div class="pricing-card animate-up anim-delay-3">
+          <div class="pricing-popular" style="background:var(--primary)">📆 وفر أكثر</div>
+          <div class="pricing-plan"><span>📆 الباقة السنوية</span><span class="badge badge-primary">سنوي</span></div>
+          <div class="pricing-price">
+            <div><strong>25,000</strong><span>DA / سنة</span></div>
+            <div style="font-size:0.8rem;color:var(--primary);margin-top:0.25rem">وفر 5,000 DA مقارنة بالشهري</div>
+          </div>
+          <ul class="pricing-features">
+            <li>كل مميزات الباقة الشهرية</li>
+            <li>تقارير سنوية تفصيلية</li>
+            <li>دعم ذو أولوية</li>
+            <li>تدريب مجاني على المنصة</li>
+            <li>خصم 17% عن الدفع الشهري</li>
+          </ul>
+          <a href="professional/medrep-dashboard.html" class="btn btn-outline btn-lg">استكشف بوابة المندوب</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lab Plans -->
+    <div id="plans-lab" class="plans-section" style="display:none">
+      <h2 style="text-align:center;font-weight:900;margin-bottom:2rem">🧪 باقات مخابر التحاليل</h2>
+      <div class="pricing-grid">
+        <div class="pricing-card animate-up anim-delay-1">
+          <div class="pricing-plan"><span>🆓 Freemium</span><span class="badge badge-muted">مجاني</span></div>
+          <div class="pricing-price"><strong>0</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>تسجيل المخبر في الدليل</li>
+            <li>عرض حتى 10 تحاليل</li>
+            <li>معلومات الاتصال والموقع</li>
+            <li>رابط الخريطة</li>
+            <li>تقييمات المرضى</li>
+          </ul>
+          <a href="professional/laboratory-dashboard.html" class="btn btn-ghost btn-lg">استكشف لوحة المخبر</a>
+        </div>
+        <div class="pricing-card featured animate-up anim-delay-2">
+          <div class="pricing-popular">⭐ الأكثر طلباً</div>
+          <div class="pricing-plan"><span>💎 Premium</span><span class="badge badge-primary">مميز</span></div>
+          <div class="pricing-price">
+            <div><strong>4,500</strong><span>DA / شهر</span></div>
+            <div style="font-size:0.8rem;color:var(--primary);margin-top:0.25rem">أو 45,000 DA / سنة (وفر شهرين)</div>
+          </div>
+          <ul class="pricing-features">
+            <li>تحاليل غير محدودة</li>
+            <li>ظهور مميز في نتائج البحث</li>
+            <li>إحصاءات المشاهدات</li>
+            <li>إدارة المواعيد</li>
+            <li>إشعارات النتائج للمرضى</li>
+            <li>دعم ذو أولوية</li>
+          </ul>
+          <a href="professional/laboratory-dashboard.html" class="btn btn-primary btn-lg">استكشف لوحة المخبر ←</a>
+        </div>
+        <div class="pricing-card animate-up anim-delay-3">
+          <div class="pricing-plan"><span>🏢 Enterprise</span><span class="badge badge-secondary">مؤسسي</span></div>
+          <div class="pricing-price"><strong>8,500</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>كل مميزات الباقة المميزة</li>
+            <li>إدارة شبكة مخابر</li>
+            <li>تقارير وتحليلات متقدمة</li>
+            <li>API مخصص للتكامل</li>
+            <li>مدير حساب مخصص</li>
+            <li>دعم 24/7</li>
+          </ul>
+          <a href="professional/laboratory-dashboard.html" class="btn btn-outline btn-lg">استكشف لوحة المخبر</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Medical Services Plans -->
+    <div id="plans-medservices" class="plans-section" style="display:none">
+      <h2 style="text-align:center;font-weight:900;margin-bottom:2rem">🩺 باقات الخدمات الطبية</h2>
+      <p style="text-align:center;color:var(--muted);font-size:.875rem;margin-bottom:2rem">باراصيدلية · موردو الأجهزة الطبية · أجهزة تقويمية · رعاية منزلية · كينيزيولوجيا</p>
+      <div class="pricing-grid">
+        <div class="pricing-card animate-up anim-delay-1">
+          <div class="pricing-plan"><span>🆓 الباقة المجانية</span><span class="badge badge-muted">مجاني</span></div>
+          <div class="pricing-price"><strong>0</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>تسجيل الخدمة في الدليل</li>
+            <li>عرض حتى 15 منتج أو خدمة</li>
+            <li>معلومات الاتصال والموقع</li>
+            <li>صفحة عامة للخدمة</li>
+            <li>دعم عبر البريد</li>
+          </ul>
+          <a href="professional/medical-services-dashboard.html" class="btn btn-ghost btn-lg">استكشف لوحة الخدمات</a>
+        </div>
+        <div class="pricing-card featured animate-up anim-delay-2">
+          <div class="pricing-popular">⭐ الأكثر شيوعاً</div>
+          <div class="pricing-plan"><span>💎 الباقة الاحترافية</span><span class="badge badge-primary">Pro</span></div>
+          <div class="pricing-price">
+            <div><strong>4,200</strong><span>DA / شهر</span></div>
+            <div style="font-size:0.8rem;color:var(--primary);margin-top:0.25rem">أو 42,000 DA / سنة (وفر 15%)</div>
+          </div>
+          <ul class="pricing-features">
+            <li>منتجات وخدمات غير محدودة</li>
+            <li>ظهور مميز في نتائج البحث</li>
+            <li>إدارة الطلبات والحجوزات</li>
+            <li>إحصاءات تفصيلية</li>
+            <li>لوحة التحكم الكاملة</li>
+            <li>دعم ذو أولوية</li>
+            <li>فترة تجريبية 14 يوم</li>
+          </ul>
+          <a href="professional/medical-services-dashboard.html" class="btn btn-primary btn-lg">استكشف لوحة الخدمات ←</a>
+        </div>
+        <div class="pricing-card animate-up anim-delay-3">
+          <div class="pricing-plan"><span>🏢 الباقة المؤسسية</span><span class="badge badge-secondary">Enterprise</span></div>
+          <div class="pricing-price"><strong>10,500</strong><span>DA / شهر</span></div>
+          <ul class="pricing-features">
+            <li>كل مميزات الباقة الاحترافية</li>
+            <li>إدارة شبكة فروع</li>
+            <li>API مخصص</li>
+            <li>تقارير وتحليلات متقدمة</li>
+            <li>مدير حساب مخصص</li>
+            <li>دعم 24/7</li>
+            <li>تكامل مع أنظمة ERP</li>
+          </ul>
+          <a href="professional/medical-services-dashboard.html" class="btn btn-outline btn-lg">استكشف لوحة الخدمات</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard Preview CTA -->
+    <div style="max-width:860px;margin:4rem auto 0;background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border-radius:var(--radius-xl);padding:3rem 2rem;text-align:center">
+      <h2 style="font-weight:900;margin-bottom:.5rem">استكشف لوحات التحكم</h2>
+      <p style="color:var(--muted);font-size:.875rem;margin-bottom:2.5rem">اختر فئتك لاستعراض لوحة التحكم المخصصة لها مباشرة</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+        <a href="professional/pharmacy-dashboard.html" class="btn btn-ghost btn-lg">🏥 لوحة الصيدلية</a>
+        <a href="professional/medrep-dashboard.html" class="btn btn-ghost btn-lg">💼 بوابة المندوب</a>
+        <a href="professional/laboratory-dashboard.html" class="btn btn-ghost btn-lg">🧪 لوحة المخبر</a>
+        <a href="professional/medical-services-dashboard.html" class="btn btn-primary btn-lg">🩺 لوحة الخدمات الطبية</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="max-width:700px;margin:4rem auto 0">
+      <h2 style="text-align:center;font-weight:900;margin-bottom:2rem">أسئلة شائعة</h2>
+      <details style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.75rem">
+        <summary style="cursor:pointer;font-weight:600;padding:0.25rem 0">هل يمكنني تغيير الباقة لاحقاً؟</summary>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:0.75rem;line-height:1.7">نعم، يمكنك الترقية أو التخفيض في أي وقت عبر التواصل مع فريق الدعم.</p>
+      </details>
+      <details style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.75rem">
+        <summary style="cursor:pointer;font-weight:600;padding:0.25rem 0">هل هناك فترة تجريبية مجانية؟</summary>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:0.75rem;line-height:1.7">نعم، تأتي الباقات المدفوعة مع 14 يوماً تجريبية مجانية.</p>
+      </details>
+      <details style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:0.75rem">
+        <summary style="cursor:pointer;font-weight:600;padding:0.25rem 0">ما طرق الدفع المتاحة؟</summary>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:0.75rem;line-height:1.7">نقبل التحويل البنكي، CCP، وبطاقات Dahabia، وEdahabia.</p>
+      </details>
+      <details style="background:white;border:1px solid var(--border);border-radius:var(--radius);padding:1rem">
+        <summary style="cursor:pointer;font-weight:600;padding:0.25rem 0">كيف أصل إلى لوحة التحكم؟</summary>
+        <p style="color:var(--muted);font-size:0.875rem;margin-top:0.75rem;line-height:1.7">انقر على أي باقة من باقات فئتك المهنية للوصول مباشرة إلى لوحة التحكم المخصصة لها.</p>
+      </details>
+    </div>
+  </div>
+</div>
+
+<script>
+function showRole(role) {
+  document.querySelectorAll('.plans-section').forEach(s => s.style.display = 'none');
+  document.querySelectorAll('.role-btn').forEach(b => {
+    b.style.borderColor = b.dataset.role === role ? 'var(--primary)' : 'var(--border)';
+    b.style.background  = b.dataset.role === role ? 'var(--primary-light)' : 'white';
+  });
+  const el = document.getElementById('plans-' + role);
+  if (el) { el.style.display = 'block'; el.scrollIntoView({ behavior:'smooth', block:'nearest' }); }
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const role = params.get('role') || window.location.hash.replace('#','') || 'pharmacy';
+  showRole(role);
+});
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">© 2025 شفاء ديزاد — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

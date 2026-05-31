@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رفع الوصفة الطبية — شفاء ديزاد</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .rx-page { min-height: 80vh; padding: 3rem 0; }
+    .rx-card { background: white; border: 1.5px solid var(--border); border-radius: var(--radius-xl); padding: 2.5rem; max-width: 640px; margin: 0 auto; box-shadow: var(--shadow-md); }
+    .rx-badge { display: inline-flex; align-items: center; gap: 0.4rem; background: #fef9c3; color: #854d0e; border: 1.5px solid #fde68a; border-radius: 9999px; padding: 0.35rem 1rem; font-size: 0.82rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .rx-title { font-size: 1.6rem; font-weight: 900; color: var(--text); margin-bottom: 0.5rem; }
+    .rx-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.7; }
+    .rx-upload-zone { border: 2.5px dashed var(--border); border-radius: var(--radius-lg); padding: 2.5rem 1rem; text-align: center; cursor: pointer; transition: border-color var(--transition), background var(--transition); margin-bottom: 1.5rem; background: var(--muted-bg); }
+    .rx-upload-zone:hover, .rx-upload-zone.dragover { border-color: var(--primary); background: var(--primary-light); }
+    .rx-upload-zone input[type=file] { display: none; }
+    .rx-upload-icon { font-size: 3rem; margin-bottom: 0.75rem; }
+    .rx-upload-text { font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .rx-upload-hint { font-size: 0.8rem; color: var(--muted); }
+    .rx-preview { display: none; margin-bottom: 1.5rem; text-align: center; }
+    .rx-preview img { max-width: 100%; max-height: 250px; border-radius: var(--radius); border: 1.5px solid var(--border); }
+    .rx-ai-box { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1.5px solid #bae6fd; border-radius: var(--radius-lg); padding: 1.25rem; margin-top: 1.5rem; }
+    .rx-ai-title { font-weight: 800; color: #0369a1; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.4rem; }
+    .rx-ai-items { list-style: none; margin-top: 0.75rem; }
+    .rx-ai-items li { padding: 0.5rem 0.75rem; background: white; border-radius: var(--radius); margin-bottom: 0.4rem; display: flex; justify-content: space-between; align-items: center; border: 1px solid #bae6fd; font-size: 0.9rem; }
+    .steps-row { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+    .step-item { flex: 1; min-width: 140px; background: var(--muted-bg); border-radius: var(--radius); padding: 1rem; text-align: center; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: var(--primary); color: white; font-weight: 900; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 0.9rem; }
+    .step-text { font-size: 0.8rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="../index.html" class="navbar-brand">
+    <div class="logo-icon">💊</div>
+    <span>شفاء<span style="color:var(--primary)">ديزاد</span></span>
+  </a>
+  <ul class="navbar-links">
+    <li><a href="../index.html">الرئيسية</a></li>
+    <li><a href="search.html">الأدوية والمستلزمات</a></li>
+    <li><a href="pharmacies.html">الصيدليات</a></li>
+    <li><a href="labs.html">مخابر التحاليل</a></li>
+    <li><a href="donations.html">التضامن الصحي</a></li>
+    <li><a href="pricing.html">الاشتراكات</a></li>
+    <li><a href="contact.html">تواصل معنا</a></li>
+  </ul>
+  <div class="navbar-actions">
+    <a href="pricing.html" class="btn btn-primary btn-sm">اشتراك المهنيين</a>
+  </div>
+  <button class="navbar-toggle" id="navbar-toggle"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="../index.html">🏠 الرئيسية</a>
+  <a href="search.html">🔍 الأدوية والمستلزمات</a>
+  <a href="prescription.html">📋 رفع وصفة</a>
+  <a href="labs.html">🧪 مخابر التحاليل</a>
+</div>
+
+<div class="rx-page">
+  <div class="container">
+    <div class="rx-card">
+      <div class="rx-badge">🚧 قيد الإنشاء — ميزة تجريبية</div>
+      <h1 class="rx-title">📋 رفع الوصفة الطبية</h1>
+      <p class="rx-sub">
+        ارفع صورة وصفتك الطبية وسيقوم نظامنا بتحليلها واقتراح الأدوية المتاحة في الصيدليات القريبة منك.
+      </p>
+
+      <div class="steps-row">
+        <div class="step-item">
+          <div class="step-num">١</div>
+          <div class="step-text">ارفع صورة الوصفة</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">٢</div>
+          <div class="step-text">يقرأ الذكاء الاصطناعي الأدوية</div>
+        </div>
+        <div class="step-item">
+          <div class="step-num">٣</div>
+          <div class="step-text">نقترح عليك البدائل المتاحة</div>
+        </div>
+      </div>
+
+      <form id="rx-form">
+        <label class="rx-upload-zone" id="rx-upload-zone" for="rx-file-input">
+          <div class="rx-upload-icon">📋</div>
+          <div class="rx-upload-text">انقر لرفع الوصفة الطبية</div>
+          <div class="rx-upload-hint">JPG, PNG أو PDF — حجم أقصى 5 ميغا</div>
+          <input type="file" id="rx-file-input" accept="image/*,.pdf">
+        </label>
+
+        <div class="rx-preview" id="rx-preview">
+          <img id="rx-preview-img" src="" alt="معاينة الوصفة">
+          <div style="margin-top:0.5rem;font-size:0.8rem;color:var(--muted)" id="rx-file-name"></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">اسم المريض (اختياري)</label>
+          <input type="text" id="rx-patient-name" class="input" placeholder="أدخل الاسم...">
+        </div>
+        <div class="form-group">
+          <label class="form-label">ملاحظات (اختياري)</label>
+          <textarea id="rx-notes" class="input" rows="2" placeholder="أي معلومات إضافية..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center" id="rx-submit-btn">
+          تحليل الوصفة بالذكاء الاصطناعي 🤖
+        </button>
+      </form>
+
+      <div class="rx-ai-box" id="rx-ai-result" style="display:none">
+        <div class="rx-ai-title">🤖 نتائج التحليل الذكي <span class="rx-badge" style="font-size:0.72rem">تجريبي</span></div>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:0.5rem">الأدوية المكتشفة في الوصفة:</p>
+        <ul class="rx-ai-items" id="rx-ai-list"></ul>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:0.75rem">
+          ⚠️ هذه الميزة تجريبية ولا تُغني عن مراجعة الصيدلاني أو الطبيب المعالج.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">© 2025 شفاء ديزاد — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script src="../js/config.js"></script>
+<script src="../js/api.js"></script>
+<script src="../js/main.js"></script>
+<script src="../js/prescription.js"></script>
+</body>
+</html>
